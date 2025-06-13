@@ -27,8 +27,11 @@ class StoreCustomerRequest extends FormRequest
 
 protected function prepareForValidation()
 {
-    $this->merge([
-        'postal_code' => $this->postalCode
-    ]);
+    if ($this->has('postalCode')) {
+        $this->merge([
+            'postal_code' => $this->postalCode
+        ]);
+    }
 }
+
 }
